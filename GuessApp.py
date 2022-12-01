@@ -23,7 +23,7 @@ def restart():
 def main():
     st.title('Guess the Number 🔢')
     head, victory = st.columns([1,0.3])
-    head.write('The program chooses a number at random and its your job to guess that number. You only have limited '
+    head.write('This program chooses a number at random and its your job to guess that number. You only have limited '
                ' number of guesses. All the Best!')
     st.write("---")
     if 'ans' not in st.session_state:
