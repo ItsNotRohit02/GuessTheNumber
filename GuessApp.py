@@ -11,6 +11,7 @@ def init(max: int = 10, pastinit=False):
     if not pastinit:
         st.session_state.input = 0
         st.session_state.wins = 0
+        st.session_state.cheatcode = 0
     st.session_state.ans = answer(max)
     st.session_state.tries = 0
     st.session_state.over = False
@@ -21,6 +22,7 @@ def restart():
 
 
 def main():
+    st.set_page_config(page_title="Guess The Number", page_icon="🔢")
     st.title('Guess the Number 🔢')
     head, victory = st.columns([1,0.3])
     head.write('This program chooses a number at random and its your job to guess that number. You only have limited '
@@ -32,8 +34,10 @@ def main():
     floor, result = st.empty(),st.empty()
     guess = floor.number_input('Enter your Guess', min_value=0, max_value=st.session_state.max,
                                key=st.session_state.input)
-    #To Display answer remove # from below line
-    #st.write(st.session_state.ans)
+    if guess == 666 and st.session_state.max >= 666 and st.session_state.max <= 700:
+        st.session_state.cheatcode = 1
+    if st.session_state.cheatcode == 1:
+        st.write(st.session_state.ans)
     st.caption('Made by Rohit')
     if guess:
         flag=0
