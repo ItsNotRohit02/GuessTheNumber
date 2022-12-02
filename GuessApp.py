@@ -2,6 +2,7 @@ import streamlit as st
 import random
 import math
 
+st.set_page_config(page_title="Guess The Number", page_icon="🔢")
 def answer(max: int) -> int:
     st.session_state.total = round(math.log(max + 1, 2))
     return random.randint(1, max)
@@ -22,7 +23,6 @@ def restart():
 
 
 def main():
-    st.set_page_config(page_title="Guess The Number", page_icon="🔢")
     st.title('Guess the Number 🔢')
     head, victory = st.columns([1,0.3])
     head.write('This program chooses a number at random and its your job to guess that number. You only have limited '
