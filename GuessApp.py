@@ -39,6 +39,7 @@ def main():
     if st.session_state.cheatcode == 1:
         st.write(st.session_state.ans)
     st.caption('Made by Rohit')
+    st.markdown("[![Foo](https://cdn-icons-png.flaticon.com/24/25/25231.png)](https://github.com/ItsNotRohit02)")
     if guess:
         flag=0
         st.session_state.tries += 1
