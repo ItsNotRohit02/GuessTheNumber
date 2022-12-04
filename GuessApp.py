@@ -3,6 +3,8 @@ import random
 import math
 
 st.set_page_config(page_title="Guess The Number", page_icon="🔢")
+
+
 def answer(max: int) -> int:
     st.session_state.total = round(math.log(max + 1, 2))
     return random.randint(1, max)
@@ -16,6 +18,7 @@ def init(max: int = 10, pastinit=False):
     st.session_state.ans = answer(max)
     st.session_state.tries = 0
     st.session_state.over = False
+
 
 def restart():
     init(st.session_state.max, pastinit=True)
@@ -34,7 +37,7 @@ def main():
     floor, result = st.empty(),st.empty()
     guess = floor.number_input('Enter your Guess', min_value=0, max_value=st.session_state.max,
                                key=st.session_state.input)
-    if guess == 666 and st.session_state.max >= 666 and st.session_state.max <= 700:
+    if guess == 666 and 666 <= st.session_state.max <= 700:
         st.session_state.cheatcode = 1
     if st.session_state.cheatcode == 1:
         st.write(st.session_state.ans)
