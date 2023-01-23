@@ -27,14 +27,14 @@ def restart():
 
 def main():
     st.title('Guess the Number 🔢')
-    head, victory = st.columns([1,0.3])
+    head, victory = st.columns([1, 0.3])
     head.write('This program chooses a number at random and its your job to guess that number. You only have limited '
                ' number of guesses. All the Best!')
     st.write("---")
     if 'ans' not in st.session_state:
         init()
     st.slider('Select Maximum Range ', min_value=10, max_value=1000, value=10, key='max', on_change=restart)
-    floor, result = st.empty(),st.empty()
+    floor, result = st.empty(), st.empty()
     guess = floor.number_input('Enter your Guess', min_value=0, max_value=st.session_state.max,
                                key=st.session_state.input)
     if guess == 666 and 666 <= st.session_state.max <= 700:
@@ -44,7 +44,7 @@ def main():
     st.caption('Made by Rohit')
     st.markdown("[![Foo](https://cdn-icons-png.flaticon.com/24/25/25231.png)](https://github.com/ItsNotRohit02)")
     if guess:
-        flag=0
+        flag = 0
         st.session_state.tries += 1
         st.session_state.total -= 1
         if guess < st.session_state.ans and st.session_state.total > 0:
@@ -58,11 +58,11 @@ def main():
                 tri = 'attempts'
             result.success(f'{guess} was the right Answer ! It took you {st.session_state.tries} {tri}')
             st.balloons()
-            flag=1
-            st.session_state.wins +=1
+            flag = 1
+            st.session_state.wins += 1
             st.session_state.over = True
             floor.empty()
-            floor.button('Go Again!',on_click=restart)
+            floor.button('Go Again!', on_click=restart)
         if st.session_state.total <= 0 and flag == 0:
             st.error(f'The number was {st.session_state.ans}')
             st.session_state.over = True
@@ -70,8 +70,6 @@ def main():
             floor.button('Try Again!', on_click=restart)
 
     victory.button(f'Total Wins 🏆 {st.session_state.wins}')
-
-
 
 
 main()
